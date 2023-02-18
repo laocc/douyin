@@ -1,0 +1,24 @@
+{
+  "name": "laocc/douyin",
+  "description": "for douyin pay",
+  "homepage": "https://github.com/laocc/douyin",
+  "authors": [
+    {
+      "name": "fazo",
+      "email": "fazo@qq.com"
+    }
+  ],
+  "require": {
+    "php": ">7.4.0",
+    "laocc/esp": "*",
+    "laocc/http": "*",
+    "ext-openssl": "*",
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "laocc\\douyin\\": "/"
+    }
+  }
+}
