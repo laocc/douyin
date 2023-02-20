@@ -8,10 +8,10 @@ use esp\http\Http;
 abstract class Base extends Library
 {
     private string $api = 'https://developer.toutiao.com';
-    protected array $mchID;
-    protected array $appID;
-    protected array $token;
-    protected array $salt;
+    protected string $mchID;
+    protected string $appID;
+    protected string $token;
+    protected string $salt;
 
     public function _init(array $conf)
     {
