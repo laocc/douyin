@@ -23,7 +23,7 @@ class Refund extends Base
     {
         $post = [];
         $post['app_id'] = $this->appID;//小程序 AppID
-        $post['out_order_no'] = $params['number'];//商户订单号
+        $post['out_refund_no'] = $params['number'];//商户订单号
         $resp = $this->request('/api/apps/ecpay/v1/query_refund', $post);
         if (is_string($resp)) return $resp;
 
