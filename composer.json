@@ -18,7 +18,8 @@
   },
   "autoload": {
     "psr-4": {
-      "laocc\\douyin\\": "/"
+      "laocc\\douyin\\": "/src",
+      "laocc\\douyin\\library\\": "/library"
     }
   }
 }

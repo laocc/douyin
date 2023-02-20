@@ -5,7 +5,7 @@ namespace laocc\douyin;
 use esp\core\Library;
 use esp\http\Http;
 
-abstract class DyBase extends Library
+abstract class Base extends Library
 {
     private string $api = 'https://developer.toutiao.com';
     protected array $mchID;

@@ -1,15 +1,28 @@
 <?php
 
-namespace laocc\douyin\pay;
+namespace laocc\douyin;
 
-use laocc\douyin\DyBase;
 use laocc\douyin\library\PayFace;
 
-class Pay extends DyBase implements PayFace
+class Pay extends Base implements PayFace
 {
-    public function app(array $params)
+    public function notify(array $post): array
     {
+        $wName = [1 => 'weixin', 2 => 'alipay', 10 => 'douyin'];//支付渠道， 1-微信支付，2-支付宝支付，10-抖音支付
+
+        $params = [];
+        $params['success'] = ($post['status'] === 'SUCCESS');
+        $params['number'] = $post['cp_orderno'];//本平台订单号
+        $params['waybill'] = $post['order_id'];//抖音的订单号
+        $params['platform'] = 'douyin.' . ($wName[$post['way']] ?? '');//支付渠道， 1-微信支付，2-支付宝支付，10-抖音支付
+//        $params['waybill'] = $postData['channel_no'];//支付渠道侧单号(抖音平台请求下游渠道微信或支付宝时传入的单号)
+//        $params['waybill'] = $postData['payment_order_no'];//支付渠道侧PC单号，支付页面可见(微信支付宝侧的订单号)
+        $params['time'] = intval($post['paid_at']);
+        $params['state'] = strtolower(substr($post['status'], -20));
+        $params['amount'] = intval($post['total_amount']);
+        return $params;
     }
+
 
     public function jsapi(array $params)
     {
@@ -41,6 +54,10 @@ class Pay extends DyBase implements PayFace
     }
 
     public function h5(array $params)
+    {
+    }
+
+    public function app(array $params)
     {
     }
 
