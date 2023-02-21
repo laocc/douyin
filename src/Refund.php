@@ -8,6 +8,11 @@ class Refund extends Base
 
     public function notify(array $post): array
     {
+        /**
+         * {"err_no":0,"err_tips":"success","refundInfo":
+         * {"refund_no":"7202226296817125691","refund_amount":1,"refund_status":"SUCCESS","refunded_at":1676899286,"is_all_settled":true,"cp_extra":"","msg":""}}
+         *
+         */
         $state = ($post['refund_status'] ?? $post['status']);
         $params = [];
         $params['success'] = $state === 'SUCCESS';
