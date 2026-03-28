@@ -35,7 +35,7 @@ abstract class Base extends Library
 
     public function request(string $api, array $post, array $option = [])
     {
-        if (!isset($option['type'])) $option['type'] = 'post';
+        if (!isset($option['method'])) $option['method'] = 'post';
         if (!isset($option['encode'])) $option['encode'] = 'json';
         if (!isset($option['decode'])) $option['decode'] = 'json';
         $option['agent'] = 'laocc/esp HttpClient/cURL';
@@ -44,7 +44,7 @@ abstract class Base extends Library
         $option['headers']['Accept'] = "application/json";
         $option['headers']['Accept-Language'] = 'zh-CN';
         if ($option['type'] === 'upload') {
-            $option['type'] = 'post';
+            $option['method'] = 'post';
         } else {
             $option['headers']['Content-Type'] = "application/json";
         }
